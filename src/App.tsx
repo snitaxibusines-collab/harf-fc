@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { VOICE_FAIL_EVENT } from './lib/speech';
 import { ALL_WORDS, WORLDS, worldOfWord, type Match } from './data/content';
 import { dueReviewWords } from './lib/progress';
 import { pick } from './lib/arabic';
@@ -32,7 +33,40 @@ function nextOf(match: Match): Match | undefined {
   return undefined;
 }
 
+// Bandeau d'aide quand la voix de l'iPad ne parle pas.
+function VoiceHelp() {
+  const [show, setShow] = useState(false);
+  const [seen, setSeen] = useState(false);
+  useEffect(() => {
+    const on = () => setShow(true);
+    window.addEventListener(VOICE_FAIL_EVENT, on);
+    return () => window.removeEventListener(VOICE_FAIL_EVENT, on);
+  }, []);
+  if (!show || seen) return null;
+  return (
+    <div className="voice-help" role="alert">
+      <strong>La voix ne parle pas ?</strong>
+      <ul>
+        <li>Enlève le mode silencieux de l'iPad (la cloche barrée dans le Centre de contrôle) et monte le volume.</li>
+        <li>Réglages, Accessibilité, Contenu énoncé, Voix, Arabe : télécharge une voix.</li>
+      </ul>
+      <button type="button" className="btn btn-navy" onClick={() => setSeen(true)}>
+        D'accord
+      </button>
+    </div>
+  );
+}
+
 export default function App() {
+  return (
+    <>
+      <Screens />
+      <VoiceHelp />
+    </>
+  );
+}
+
+function Screens() {
   const [screen, setScreen] = useState<Screen>({ name: 'home' });
 
   switch (screen.name) {

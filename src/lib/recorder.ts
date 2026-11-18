@@ -44,12 +44,21 @@ export async function startRecording(): Promise<Recording> {
     stop: () =>
       new Promise<string>((resolve) => {
         clearTimeout(autoStop);
-        const finish = () => resolve(URL.createObjectURL(new Blob(chunks, { type: rec.mimeType || mime || 'audio/mp4' })));
+        const finish = () => {
+          // On coupe le micro tout de suite : sur iPad, un micro resté ouvert empêche la voix de parler.
+          releaseMic();
+          resolve(URL.createObjectURL(new Blob(chunks, { type: rec.mimeType || mime || 'audio/mp4' })));
+        };
         if (rec.state === 'inactive') return finish();
         rec.onstop = finish;
         rec.stop();
       }),
   };
+}
+
+export function releaseMic() {
+  stream?.getTracks().forEach((t) => t.stop());
+  stream = null;
 }
 
 export function playUrl(url: string): Promise<void> {

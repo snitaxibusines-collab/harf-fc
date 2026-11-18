@@ -43,11 +43,35 @@ function playFile(url: string): Promise<void> {
   });
 }
 
+// Sur iPad, la voix ne parle qu'après un premier toucher de l'écran.
+// Au tout premier toucher, on lui fait dire « rien » pour la réveiller.
+let unlocked = false;
+function unlockSpeech() {
+  if (unlocked || !('speechSynthesis' in window)) return;
+  unlocked = true;
+  try {
+    const u = new SpeechSynthesisUtterance(' ');
+    u.volume = 0;
+    window.speechSynthesis.speak(u);
+  } catch {
+    /* rien */
+  }
+}
+if (typeof window !== 'undefined') {
+  window.addEventListener('pointerdown', unlockSpeech, { capture: true, once: true });
+  window.addEventListener('touchend', unlockSpeech, { capture: true, once: true });
+}
+
+// Prévenir l'écran quand la voix ne démarre pas (mode silencieux, pas de voix arabe…).
+export const VOICE_FAIL_EVENT = 'harf-voice-fail';
+
 function utter(text: string, lang: 'ar' | 'fr', rate: number): Promise<void> {
   return new Promise((resolve) => {
-    if (!('speechSynthesis' in window)) return resolve();
+    if (!('speechSynthesis' in window)) {
+      (window as Window).dispatchEvent(new Event(VOICE_FAIL_EVENT));
+      return resolve();
+    }
     const synth = window.speechSynthesis;
-    synth.cancel();
     const u = new SpeechSynthesisUtterance(text);
     if (lang === 'ar') {
       u.lang = arabicVoice?.lang ?? 'ar-SA';
@@ -57,18 +81,37 @@ function utter(text: string, lang: 'ar' | 'fr', rate: number): Promise<void> {
       if (frenchVoice) u.voice = frenchVoice;
     }
     u.rate = rate;
+    u.volume = 1;
     let done = false;
+    let started = false;
     const finish = () => {
       if (!done) {
         done = true;
         resolve();
       }
     };
+    u.onstart = () => {
+      started = true;
+    };
     u.onend = finish;
-    u.onerror = finish;
+    u.onerror = (e) => {
+      if (e.error !== 'interrupted' && e.error !== 'canceled') window.dispatchEvent(new Event(VOICE_FAIL_EVENT));
+      finish();
+    };
     // Sécurité : certaines tablettes n'envoient jamais « fin ».
-    setTimeout(finish, 1500 + text.length * 250);
-    synth.speak(u);
+    setTimeout(finish, 2500 + text.length * 250);
+    setTimeout(() => {
+      if (!started && !done) window.dispatchEvent(new Event(VOICE_FAIL_EVENT));
+    }, 2500);
+    // Sur iPad, « cancel » juste avant « speak » peut avaler la nouvelle phrase.
+    if (synth.speaking || synth.pending) {
+      synth.cancel();
+      setTimeout(() => synth.speak(u), 120);
+    } else {
+      synth.speak(u);
+    }
+    // Sur iPad, la voix peut rester en pause après une coupure.
+    if (synth.paused) synth.resume();
   });
 }
 
