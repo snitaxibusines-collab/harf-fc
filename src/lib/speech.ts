@@ -1,7 +1,29 @@
-// La voix de l'appli. Pour l'instant : la voix arabe de l'iPad.
-// Plus tard : les enregistrements de la prof, rangés dans AUDIO_FILES (texte → fichier).
+// La voix de l'appli.
+// 1. Les enregistrements de la prof, rangés dans AUDIO_FILES (texte → fichier), plus tard.
+// 2. Les sons fabriqués à l'avance (dossier audio/, liste dans audio/manifest.json).
+// 3. En dernier recours : la voix arabe de l'iPad.
+import { normalizeSpeech, speechFile } from './speechKey';
 
 export const AUDIO_FILES: Record<string, string> = {};
+
+let madeFiles: Set<string> | null = null;
+if (typeof window !== 'undefined' && location.protocol.startsWith('http')) {
+  fetch('audio/manifest.json', { cache: 'no-cache' })
+    .then((r) => (r.ok ? r.json() : []))
+    .then((list: string[]) => {
+      madeFiles = new Set(list);
+    })
+    .catch(() => {
+      madeFiles = new Set();
+    });
+}
+
+function fileFor(text: string): string | null {
+  const own = AUDIO_FILES[text] ?? AUDIO_FILES[normalizeSpeech(text)];
+  if (own) return own;
+  const f = speechFile(text);
+  return madeFiles?.has(f) ? `audio/${f}` : null;
+}
 
 let arabicVoice: SpeechSynthesisVoice | null = null;
 let frenchVoice: SpeechSynthesisVoice | null = null;
@@ -30,16 +52,48 @@ export function arabicVoiceName(): string | null {
   return arabicVoice ? `${arabicVoice.name} (${arabicVoice.lang})` : null;
 }
 
-let current: HTMLAudioElement | null = null;
+// Un seul lecteur de sons, réveillé au premier toucher : sur iPad, il peut ensuite jouer tout seul.
+let player: HTMLAudioElement | null = null;
+function getPlayer(): HTMLAudioElement {
+  if (!player) {
+    player = new Audio();
+    player.preload = 'auto';
+    player.setAttribute('playsinline', '');
+  }
+  return player;
+}
 
-function playFile(url: string): Promise<void> {
+// Un tout petit son muet (WAV), pour réveiller le lecteur.
+function silentWav(): string {
+  const n = 800;
+  const buf = new ArrayBuffer(44 + n * 2);
+  const v = new DataView(buf);
+  const str = (o: number, t: string) => [...t].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+  str(0, 'RIFF'); v.setUint32(4, 36 + n * 2, true); str(8, 'WAVE'); str(12, 'fmt ');
+  v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+  v.setUint32(24, 16000, true); v.setUint32(28, 32000, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+  str(36, 'data'); v.setUint32(40, n * 2, true);
+  let bin = '';
+  new Uint8Array(buf).forEach((b) => (bin += String.fromCharCode(b)));
+  return 'data:audio/wav;base64,' + btoa(bin);
+}
+
+let playToken = 0;
+function playFile(url: string, rate = 1): Promise<void> {
   return new Promise((resolve) => {
-    current?.pause();
-    const a = new Audio(url);
-    current = a;
-    a.onended = () => resolve();
-    a.onerror = () => resolve();
-    a.play().catch(() => resolve());
+    const a = getPlayer();
+    const token = ++playToken;
+    a.pause();
+    a.src = url;
+    a.playbackRate = rate;
+    (a as HTMLAudioElement & { preservesPitch?: boolean }).preservesPitch = true;
+    const done = () => {
+      if (token === playToken) resolve();
+    };
+    a.onended = done;
+    a.onerror = done;
+    a.play().catch(done);
+    setTimeout(done, 15000);
   });
 }
 
@@ -47,8 +101,16 @@ function playFile(url: string): Promise<void> {
 // Au tout premier toucher, on lui fait dire « rien » pour la réveiller.
 let unlocked = false;
 function unlockSpeech() {
-  if (unlocked || !('speechSynthesis' in window)) return;
+  if (unlocked) return;
   unlocked = true;
+  try {
+    const a = getPlayer();
+    a.src = silentWav();
+    a.play().catch(() => undefined);
+  } catch {
+    /* rien */
+  }
+  if (!('speechSynthesis' in window)) return;
   try {
     const u = new SpeechSynthesisUtterance(' ');
     u.volume = 0;
@@ -117,8 +179,8 @@ function utter(text: string, lang: 'ar' | 'fr', rate: number): Promise<void> {
 
 export function sayArabic(text: string, slow = false): Promise<void> {
   pickVoices();
-  const file = AUDIO_FILES[text];
-  if (file) return playFile(file);
+  const file = fileFor(text);
+  if (file) return playFile(file, slow ? 0.75 : 1);
   return utter(text, 'ar', slow ? 0.6 : 0.8);
 }
 
@@ -128,7 +190,8 @@ export function sayFrench(text: string): Promise<void> {
 }
 
 export function stopSpeaking() {
-  current?.pause();
+  playToken++;
+  player?.pause();
   if ('speechSynthesis' in window) window.speechSynthesis.cancel();
 }
 
