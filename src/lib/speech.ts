@@ -6,23 +6,12 @@ import { normalizeSpeech, speechFile } from './speechKey';
 
 export const AUDIO_FILES: Record<string, string> = {};
 
-let madeFiles: Set<string> | null = null;
-if (typeof window !== 'undefined' && location.protocol.startsWith('http')) {
-  fetch('audio/manifest.json', { cache: 'no-cache' })
-    .then((r) => (r.ok ? r.json() : []))
-    .then((list: string[]) => {
-      madeFiles = new Set(list);
-    })
-    .catch(() => {
-      madeFiles = new Set();
-    });
-}
+const online = typeof window !== 'undefined' && location.protocol.startsWith('http');
 
 function fileFor(text: string): string | null {
   const own = AUDIO_FILES[text] ?? AUDIO_FILES[normalizeSpeech(text)];
   if (own) return own;
-  const f = speechFile(text);
-  return madeFiles?.has(f) ? `audio/${f}` : null;
+  return online ? `audio/${speechFile(text)}` : null;
 }
 
 let arabicVoice: SpeechSynthesisVoice | null = null;
@@ -79,7 +68,7 @@ function silentWav(): string {
 }
 
 let playToken = 0;
-function playFile(url: string, rate = 1): Promise<void> {
+function playFile(url: string, rate = 1): Promise<boolean> {
   return new Promise((resolve) => {
     const a = getPlayer();
     const token = ++playToken;
@@ -87,13 +76,17 @@ function playFile(url: string, rate = 1): Promise<void> {
     a.src = url;
     a.playbackRate = rate;
     (a as HTMLAudioElement & { preservesPitch?: boolean }).preservesPitch = true;
-    const done = () => {
-      if (token === playToken) resolve();
+    let settled = false;
+    const done = (ok: boolean) => {
+      if (token === playToken && !settled) {
+        settled = true;
+        resolve(ok);
+      }
     };
-    a.onended = done;
-    a.onerror = done;
-    a.play().catch(done);
-    setTimeout(done, 15000);
+    a.onended = () => done(true);
+    a.onerror = () => done(false);
+    a.play().catch((e: DOMException) => done(e?.name === 'AbortError'));
+    setTimeout(() => done(true), 15000);
   });
 }
 
@@ -177,11 +170,27 @@ function utter(text: string, lang: 'ar' | 'fr', rate: number): Promise<void> {
   });
 }
 
+export let lastSoundError: string | null = null;
+
+// Pour l'espace parent : joue un son et dit si ça a marché.
+export async function testSound(): Promise<string> {
+  const text = 'مَرْحَبًا، أَنَا لَاعِبٌ فِي فَرِيقِ حَرْف';
+  const file = fileFor(text);
+  if (!file) return 'Pas de fichier son (appli ouverte hors ligne).';
+  const ok = await playFile(file);
+  return ok ? 'Le son a été joué. Si tu n\'entends rien, monte le volume.' : `Erreur : le son ne se lance pas (${player?.error?.code ?? 'lecture refusée'}).`;
+}
+
 export function sayArabic(text: string, slow = false): Promise<void> {
   pickVoices();
   const file = fileFor(text);
-  if (file) return playFile(file, slow ? 0.75 : 1);
-  return utter(text, 'ar', slow ? 0.6 : 0.8);
+  if (!file) return utter(text, 'ar', slow ? 0.6 : 0.8);
+  return playFile(file, slow ? 0.75 : 1).then((ok) => {
+    if (!ok) {
+      lastSoundError = `${file} : ${player?.error?.code ?? 'lecture refusée'}`;
+      return utter(text, 'ar', slow ? 0.6 : 0.8);
+    }
+  });
 }
 
 export function sayFrench(text: string): Promise<void> {

@@ -13,3 +13,26 @@ createRoot(document.getElementById('root')!).render(
     <App />
   </StrictMode>,
 );
+
+// Si une nouvelle version est en ligne, on recharge la page (l'iPad garde parfois l'ancienne).
+function checkVersion() {
+  if (!location.protocol.startsWith('http')) return;
+  fetch('version.txt?t=' + Date.now(), { cache: 'no-store' })
+    .then((r) => (r.ok ? r.text() : ''))
+    .then((v) => {
+      v = v.trim();
+      if (!v || v === __BUILD__) return;
+      try {
+        if (sessionStorage.getItem('harf-reloaded') === v) return;
+        sessionStorage.setItem('harf-reloaded', v);
+      } catch {
+        /* rien */
+      }
+      location.reload();
+    })
+    .catch(() => undefined);
+}
+checkVersion();
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') checkVersion();
+});

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { ALL_WORDS, WORLDS } from '../data/content';
-import { arabicVoiceName, sayArabic } from '../lib/speech';
+import { arabicVoiceName, testSound } from '../lib/speech';
 import { pendingReviewWords, resetProgress, setPlayerName, setUnlockAll, useProgress } from '../lib/progress';
 import { Ar, Balls, TopBar } from '../components/ui';
 
@@ -11,6 +11,7 @@ export function Parent({ onBack }: { onBack: () => void }) {
   const [answer, setAnswer] = useState('');
   const [open, setOpen] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
+  const [soundMsg, setSoundMsg] = useState<string | null>(null);
   const voice = arabicVoiceName();
   const review = pendingReviewWords();
 
@@ -76,15 +77,21 @@ export function Parent({ onBack }: { onBack: () => void }) {
             Ouvrir tous les matchs (il avance vite)
           </label>
 
-          <h2>Voix arabe</h2>
-          <p className="muted">
-            {voice
-              ? `Voix utilisée : ${voice}.`
-              : "Aucune voix arabe trouvée. Sur iPad : Réglages › Accessibilité › Contenu énoncé › Voix › Arabe, puis téléchargez une voix."}
-          </p>
-          <button type="button" className="btn btn-ghost" onClick={() => sayArabic('مَرْحَبًا، أَنَا لَاعِبٌ فِي فَرِيقِ حَرْف')}>
-            Tester la voix
+          <h2>Son</h2>
+          <button
+            type="button"
+            className="btn btn-ghost"
+            onClick={() => {
+              setSoundMsg('…');
+              testSound().then(setSoundMsg);
+            }}
+          >
+            Tester le son
           </button>
+          {soundMsg && <p className="muted">{soundMsg}</p>}
+          <p className="muted">
+            Version de l'appli : {__BUILD__}. Voix de secours de l'iPad : {voice ?? 'aucune'}.
+          </p>
 
           <h2>Recommencer</h2>
           {confirmReset ? (
