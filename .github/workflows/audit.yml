@@ -2,17 +2,19 @@ name: Contrôle des sons
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - tools/audit_audio.py
-      - .github/workflows/audit.yml
+    inputs:
+      etape:
+        description: "tout = mots puis phrases ; phrases = seulement réécouter les phrases"
+        default: tout
+        type: choice
+        options: [tout, phrases]
 
 permissions:
   contents: write
 
 jobs:
   mots:
+    if: inputs.etape != 'phrases'
     runs-on: ubuntu-latest
     timeout-minutes: 120
     strategy:
@@ -34,6 +36,7 @@ jobs:
 
   choix:
     needs: mots
+    if: inputs.etape != 'phrases'
     runs-on: ubuntu-latest
     concurrency:
       group: audio
@@ -65,6 +68,7 @@ jobs:
 
   phrases:
     needs: choix
+    if: always() && (needs.choix.result == 'success' || inputs.etape == 'phrases')
     runs-on: ubuntu-latest
     timeout-minutes: 120
     strategy:
@@ -88,6 +92,7 @@ jobs:
 
   bilan:
     needs: phrases
+    if: always() && needs.phrases.result == 'success'
     runs-on: ubuntu-latest
     concurrency:
       group: audio

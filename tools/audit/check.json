@@ -1,0 +1,1646 @@
+{
+ "أَسْوَدُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "أسود",
+  "how": "H"
+ },
+ "الثُّومُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الثوم",
+  "how": "H"
+ },
+ "السَّلَّةُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "السلة",
+  "how": "H"
+ },
+ "الْأَسَدُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الأسد",
+  "how": "H"
+ },
+ "الْجَمَلُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الجمل",
+  "how": "H"
+ },
+ "الْعَصِيرُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "العصير",
+  "how": "H"
+ },
+ "الْكَلْبُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الكلب",
+  "how": "H"
+ },
+ "الْوَرَقَةُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الورقة",
+  "how": "H"
+ },
+ "بُرْتُقَالٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "برتقال",
+  "how": "H"
+ },
+ "ثُعْبَانٌ": {
+  "ok": false,
+  "score": 0.8,
+  "heard": "فعبان",
+  "how": "H"
+ },
+ "حَرَمٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "حرم",
+  "how": "H"
+ },
+ "خَسٌّ": {
+  "ok": false,
+  "score": 0.5,
+  "heard": "خص",
+  "how": "H"
+ },
+ "رُمَّانَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "رمانة",
+  "how": "H"
+ },
+ "سَلَّةٌ": {
+  "ok": false,
+  "score": 0.8,
+  "heard": "سل",
+  "how": "N"
+ },
+ "صَغِيرَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "صغيرة",
+  "how": "H"
+ },
+ "عَصِيرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "عصير",
+  "how": "H"
+ },
+ "فَارِغَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "فارغة",
+  "how": "H"
+ },
+ "قَصِيرَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "قصيرة",
+  "how": "H"
+ },
+ "كُرَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "كرة",
+  "how": "N"
+ },
+ "مَفْتُوحٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "مفتوح",
+  "how": "H"
+ },
+ "مِصْبَاحٌ": {
+  "ok": false,
+  "score": 0.889,
+  "heard": "مصبح",
+  "how": "H"
+ },
+ "نَظِيفٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "نظيف",
+  "how": "H"
+ },
+ "هٰذَا": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "هذا",
+  "how": "H"
+ },
+ "أَمِيرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "أمير",
+  "how": "H"
+ },
+ "الرَّبُّ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الرب",
+  "how": "H"
+ },
+ "الطَّمَاطِمُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الطماطم",
+  "how": "H"
+ },
+ "الْبَعُوضَةُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "البعوضة",
+  "how": "H"
+ },
+ "الْحِمَارُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الحمار",
+  "how": "H"
+ },
+ "الْفَرَاوِلَةُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الفراولة",
+  "how": "H"
+ },
+ "الْمَوْزُ": {
+  "ok": false,
+  "score": 0.8,
+  "heard": "النوز",
+  "how": "H"
+ },
+ "بَصَلٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "بصل",
+  "how": "H"
+ },
+ "تُفَّاحٌ": {
+  "ok": false,
+  "score": 0.5,
+  "heard": "توفر",
+  "how": "H"
+ },
+ "جَزَرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "جزر",
+  "how": "P"
+ },
+ "حُوتٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "حوت",
+  "how": "H"
+ },
+ "دَفْتَرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "دفتر",
+  "how": "H"
+ },
+ "سَارَ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "سار",
+  "how": "H"
+ },
+ "سُورٌ": {
+  "ok": false,
+  "score": 0.4,
+  "heard": "صر",
+  "how": "H"
+ },
+ "طَمَاطِمُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "طماطم",
+  "how": "H"
+ },
+ "عِنَبٌ": {
+  "ok": false,
+  "score": 0.857,
+  "heard": "عينب",
+  "how": "P"
+ },
+ "فُلْفُلٌ": {
+  "ok": false,
+  "score": 0.889,
+  "heard": "فالفل",
+  "how": "U"
+ },
+ "كَبِيرَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "كبيرة",
+  "how": "H"
+ },
+ "لَاعِبٌ": {
+  "ok": false,
+  "score": 0.8,
+  "heard": "لا عبد",
+  "how": "H"
+ },
+ "مَوْزٌ": {
+  "ok": false,
+  "score": 0.667,
+  "heard": "موس",
+  "how": "H"
+ },
+ "نَاقَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "ناقة",
+  "how": "H"
+ },
+ "هَبَّ": {
+  "ok": false,
+  "score": 0.5,
+  "heard": "هد",
+  "how": "H"
+ },
+ "أَنَا": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "أنا",
+  "how": "H"
+ },
+ "الرُّمَّانُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الرمان",
+  "how": "H"
+ },
+ "اللَّوْحَةُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "اللوحة",
+  "how": "H"
+ },
+ "الْبَقَرَةُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "البقرة",
+  "how": "H"
+ },
+ "الْخَالِقُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الخالق",
+  "how": "H"
+ },
+ "الْفُلْفُلُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الفلفل",
+  "how": "H"
+ },
+ "الْمُرَبَّى": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "المربى",
+  "how": "H"
+ },
+ "بَطَاطِسُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "بطاطس",
+  "how": "H"
+ },
+ "تُفَّاحَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "تفاحة",
+  "how": "H"
+ },
+ "جَمَالٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "جمال",
+  "how": "H"
+ },
+ "حِصَانٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "حصان",
+  "how": "H"
+ },
+ "ذَلَّ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "ذل",
+  "how": "H"
+ },
+ "سَاعَةٌ": {
+  "ok": false,
+  "score": 0.571,
+  "heard": "سعى",
+  "how": "H"
+ },
+ "شَارَ": {
+  "ok": false,
+  "score": 0.8,
+  "heard": "شر",
+  "how": "U"
+ },
+ "طَوِيلٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "طويل",
+  "how": "H"
+ },
+ "غَابَ": {
+  "ok": false,
+  "score": 0.667,
+  "heard": "راب",
+  "how": "H"
+ },
+ "فِيلٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "فيل",
+  "how": "H"
+ },
+ "كَتَبَ": {
+  "ok": false,
+  "score": 0.857,
+  "heard": "كتبت",
+  "how": "H"
+ },
+ "لَوْحَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "لوحة",
+  "how": "H"
+ },
+ "مَوْزَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "موزة",
+  "how": "H"
+ },
+ "نَحْرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "نحر",
+  "how": "H"
+ },
+ "هَدَفٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "هدف",
+  "how": "H"
+ },
+ "أَحْمَرُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "أحمر",
+  "how": "H"
+ },
+ "أَنْتِ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "أنت",
+  "how": "H"
+ },
+ "الزَّيْتُ": {
+  "ok": false,
+  "score": 0.909,
+  "heard": "والزيت",
+  "how": "H"
+ },
+ "النَّاقَةُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الناقة",
+  "how": "H"
+ },
+ "الْبُرْتُقَالُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "البرتقال",
+  "how": "H"
+ },
+ "الْخَسُّ": {
+  "ok": false,
+  "score": 0.75,
+  "heard": "الخص",
+  "how": "H"
+ },
+ "الْقَهْوَةُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "القهوة",
+  "how": "H"
+ },
+ "الْمِصْبَاحُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "المصباح",
+  "how": "H"
+ },
+ "بَعِيدٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "بعيد",
+  "how": "H"
+ },
+ "تِينَةٌ": {
+  "ok": false,
+  "score": 0.857,
+  "heard": "تين",
+  "how": "N"
+ },
+ "حَارٌّ": {
+  "ok": false,
+  "score": 0.8,
+  "heard": "حر",
+  "how": "P"
+ },
+ "خَابَ": {
+  "ok": false,
+  "score": 0.4,
+  "heard": "خد",
+  "how": "H"
+ },
+ "ذُرَةٌ": {
+  "ok": false,
+  "score": 0.857,
+  "heard": "ذورة",
+  "how": "H"
+ },
+ "سَبُّورَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "سبورة",
+  "how": "H"
+ },
+ "شَبَكَ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "شبك",
+  "how": "H"
+ },
+ "ظَلَّ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "ظل",
+  "how": "H"
+ },
+ "غَرَسَ": {
+  "ok": false,
+  "score": 0.667,
+  "heard": "غرص",
+  "how": "H"
+ },
+ "قَدِيمَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "قديمة",
+  "how": "H"
+ },
+ "كَرَزٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "كرز",
+  "how": "H"
+ },
+ "لَيْمُونَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "ليمونة",
+  "how": "H"
+ },
+ "مُغْلَقٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "مغلق",
+  "how": "H"
+ },
+ "نَذَرَ": {
+  "ok": false,
+  "score": 0.667,
+  "heard": "نظر",
+  "how": "H"
+ },
+ "هَلَّ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "هل؟",
+  "how": "H"
+ },
+ "أَخْضَرُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "أخضر",
+  "how": "H"
+ },
+ "التُّفَّاحُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "التفاح",
+  "how": "P"
+ },
+ "الزُّبْدَةُ": {
+  "ok": false,
+  "score": 0.727,
+  "heard": "والزد",
+  "how": "N"
+ },
+ "النَّحْلَةُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "النحلة",
+  "how": "H"
+ },
+ "الْبِطِّيخُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "البطيخ",
+  "how": "H"
+ },
+ "الْخَيْلُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الخيل",
+  "how": "H"
+ },
+ "الْقَيُّومُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "القيوم",
+  "how": "H"
+ },
+ "الْمِكْنَسَةُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "المكنسة",
+  "how": "H"
+ },
+ "بَعِيدَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "بعيدة",
+  "how": "H"
+ },
+ "ثَارَ": {
+  "ok": false,
+  "score": 0.571,
+  "heard": "فارغ",
+  "how": "H"
+ },
+ "حَارَّةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "حارة",
+  "how": "U"
+ },
+ "خَالٍ": {
+  "ok": false,
+  "score": 0.857,
+  "heard": "خالي",
+  "how": "H"
+ },
+ "ذِئْبٌ": {
+  "ok": false,
+  "score": 0.4,
+  "heard": "وِبْ",
+  "how": "P"
+ },
+ "سَعَلَ": {
+  "ok": false,
+  "score": 0.857,
+  "heard": "سعال",
+  "how": "H"
+ },
+ "شَمَّ": {
+  "ok": false,
+  "score": 0.5,
+  "heard": "شن",
+  "how": "H"
+ },
+ "ظَنَّ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "ظن",
+  "how": "H"
+ },
+ "غَيْرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "غير",
+  "how": "H"
+ },
+ "قَرِيبٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "قريب",
+  "how": "H"
+ },
+ "كَرَزَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "كرزة",
+  "how": "H"
+ },
+ "مَحْذُورٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "محذور",
+  "how": "H"
+ },
+ "مُغْلَقَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "مغلقة",
+  "how": "H"
+ },
+ "نَذِيرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "نذير",
+  "how": "H"
+ },
+ "هُدْهُدٌ": {
+  "ok": false,
+  "score": 0.444,
+  "heard": "غد غد",
+  "how": "H"
+ },
+ "أَمَلٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "أمل",
+  "how": "H"
+ },
+ "الذِّئْبُ": {
+  "ok": false,
+  "score": 0.8,
+  "heard": "الذلب",
+  "how": "H"
+ },
+ "الضِّفْدَعَةُ": {
+  "ok": false,
+  "score": 0.923,
+  "heard": "الضفدع",
+  "how": "H"
+ },
+ "الْبَطَاطِسُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "البطاطس",
+  "how": "H"
+ },
+ "الْحِصَانُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الحصان",
+  "how": "H"
+ },
+ "الْفَرَاشُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الفراش",
+  "how": "H"
+ },
+ "الْمَدْرَسَةُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "المدرسة",
+  "how": "H"
+ },
+ "بَازِلَاءُ": {
+  "ok": false,
+  "score": 0.769,
+  "heard": "بل زلاء",
+  "how": "H"
+ },
+ "تَحْتَ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "تحت",
+  "how": "H"
+ },
+ "جَرَادٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "جراد",
+  "how": "P"
+ },
+ "حَلِيبٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "حليب",
+  "how": "P"
+ },
+ "خِيَارٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "خيار",
+  "how": "H"
+ },
+ "سَأَلَ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "سأل",
+  "how": "H"
+ },
+ "سُكَّرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "سكر",
+  "how": "H"
+ },
+ "ضِفْدَعَةٌ": {
+  "ok": false,
+  "score": 0.6,
+  "heard": "ضفداء",
+  "how": "N"
+ },
+ "عَنْكَبُوتٌ": {
+  "ok": false,
+  "score": 0.923,
+  "heard": "عن كبوت",
+  "how": "H"
+ },
+ "فَوْقَ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "فوق",
+  "how": "H"
+ },
+ "كَبِيرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "كبير",
+  "how": "H"
+ },
+ "كِتَابٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "كتاب",
+  "how": "H"
+ },
+ "مَمْلُوءَةٌ": {
+  "ok": false,
+  "score": 0.909,
+  "heard": "مملؤة",
+  "how": "H"
+ },
+ "نَاظِرَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "ناظرة",
+  "how": "H"
+ },
+ "نَهْرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "نهر",
+  "how": "H"
+ },
+ "وَسِخَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "وسخة",
+  "how": "H"
+ },
+ "أَمَامَ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "أمام",
+  "how": "H"
+ },
+ "الذُّرَةُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الذرة",
+  "how": "U"
+ },
+ "الصَّفُّ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الصف",
+  "how": "H"
+ },
+ "الْبَصَلُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "البصل",
+  "how": "P"
+ },
+ "الْحُوتُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الحوت",
+  "how": "H"
+ },
+ "الْغُرَابُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الغراب",
+  "how": "H"
+ },
+ "الْكِتَابُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الكتاب",
+  "how": "H"
+ },
+ "بَارِدَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "باردة",
+  "how": "H"
+ },
+ "بِطِّيخَةٌ": {
+  "ok": false,
+  "score": 0.833,
+  "heard": "بالطيخة",
+  "how": "H"
+ },
+ "جَدِيدَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "جديدة",
+  "how": "H"
+ },
+ "حَلَّ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "حل",
+  "how": "H"
+ },
+ "خَيْلٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "خيل",
+  "how": "H"
+ },
+ "زُبْدَةٌ": {
+  "ok": false,
+  "score": 0.75,
+  "heard": "زودة",
+  "how": "H"
+ },
+ "سَهْمٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "سهم",
+  "how": "H"
+ },
+ "ضَنَّ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "ضن",
+  "how": "H"
+ },
+ "عَمِيرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "عمير",
+  "how": "H"
+ },
+ "فَرِيقٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "فريق",
+  "how": "H"
+ },
+ "كَاتَبَ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "كاتب",
+  "how": "H"
+ },
+ "كُمَّثْرَى": {
+  "ok": false,
+  "score": 0.727,
+  "heard": "كماثرة",
+  "how": "H"
+ },
+ "مَمْلُوءٌ": {
+  "ok": false,
+  "score": 0.8,
+  "heard": "مملوذ",
+  "how": "P"
+ },
+ "نَاضِرَةٌ": {
+  "ok": false,
+  "score": 0.8,
+  "heard": "ناظرة",
+  "how": "H"
+ },
+ "نَمْلَةٌ": {
+  "ok": false,
+  "score": 0.857,
+  "heard": "نمل",
+  "how": "N"
+ },
+ "وَسِخٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "وسخ",
+  "how": "U"
+ },
+ "أَصْفَرُ": {
+  "ok": false,
+  "score": 0.75,
+  "heard": "وصفر",
+  "how": "H"
+ },
+ "الدَّفْتَرُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الدفتر",
+  "how": "P"
+ },
+ "السُّكَّرُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "السكر",
+  "how": "H"
+ },
+ "الْبَاذِنْجَانُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الباذنجان",
+  "how": "H"
+ },
+ "الْحَلِيبُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الحليب",
+  "how": "H"
+ },
+ "الْعَنْكَبُوتُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "العنكبوت",
+  "how": "H"
+ },
+ "الْكُرَّاثُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الكراث",
+  "how": "H"
+ },
+ "بَاذِنْجَانٌ": {
+  "ok": false,
+  "score": 0.923,
+  "heard": "بذنجان",
+  "how": "H"
+ },
+ "بُرْتُقَالَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "برتقالة",
+  "how": "H"
+ },
+ "ثُومٌ": {
+  "ok": false,
+  "score": 0.333,
+  "heard": "فون",
+  "how": "H"
+ },
+ "حَضَرَ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "حضر",
+  "how": "H"
+ },
+ "خَلْفَ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "خلف",
+  "how": "H"
+ },
+ "زَبَادِيٌّ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "زبادي",
+  "how": "H"
+ },
+ "سَمَّ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "سم",
+  "how": "H"
+ },
+ "صَفٌّ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "صف",
+  "how": "H"
+ },
+ "عَلِمَ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "علم",
+  "how": "H"
+ },
+ "فَرَاشٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "فراش",
+  "how": "H"
+ },
+ "قَهْوَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "قهوة",
+  "how": "H"
+ },
+ "كُرَّاثٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "كراث",
+  "how": "H"
+ },
+ "مَفْتُوحَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "مفتوحة",
+  "how": "H"
+ },
+ "مِكْنَسَةٌ": {
+  "ok": false,
+  "score": 0.8,
+  "heard": "متنسة",
+  "how": "H"
+ },
+ "نَظِيفَةٌ": {
+  "ok": false,
+  "score": 0.889,
+  "heard": "نظيف",
+  "how": "N"
+ },
+ "هٰذِهِ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "هذه",
+  "how": "U"
+ },
+ "أَبْيَضُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "أبيض",
+  "how": "P"
+ },
+ "أَنْتَ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "أنت",
+  "how": "H"
+ },
+ "الزَّبَادِيُّ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الزبادي",
+  "how": "H"
+ },
+ "اللَّيْمُونُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الليمون",
+  "how": "H"
+ },
+ "الْبَهَارُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "البهار",
+  "how": "H"
+ },
+ "الْخَرِيطَةُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الخريطة",
+  "how": "H"
+ },
+ "الْفِيلُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الفيل",
+  "how": "H"
+ },
+ "الْمِشْمِشُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "المشمش",
+  "how": "H"
+ },
+ "بَعُوضَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "بعوضة",
+  "how": "H"
+ },
+ "تِينٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "تين",
+  "how": "H"
+ },
+ "جَمَلٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "جمل",
+  "how": "H"
+ },
+ "حِمَارٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "حمار",
+  "how": "H"
+ },
+ "ذُبَابٌ": {
+  "ok": false,
+  "score": 0.889,
+  "heard": "ذلباب",
+  "how": "P"
+ },
+ "سَبَكَ": {
+  "ok": false,
+  "score": 0.667,
+  "heard": "سبب",
+  "how": "H"
+ },
+ "شَايٌ": {
+  "ok": false,
+  "score": 0.4,
+  "heard": "شن",
+  "how": "H"
+ },
+ "طَوِيلَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "طويلة",
+  "how": "H"
+ },
+ "غَالٍ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "غال",
+  "how": "H"
+ },
+ "قَدِيمٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "قديم",
+  "how": "H"
+ },
+ "كَثِيرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "كثير",
+  "how": "H"
+ },
+ "لَيْمُونٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "ليمون",
+  "how": "H"
+ },
+ "مُرَبَّى": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "مربى",
+  "how": "H"
+ },
+ "نَحْلَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "نحلة",
+  "how": "H"
+ },
+ "هَرَمٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "هرم",
+  "how": "P"
+ },
+ "أَلِمَ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "ألم",
+  "how": "U"
+ },
+ "الذُّبَابُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الذباب",
+  "how": "H"
+ },
+ "الشَّايُ": {
+  "ok": false,
+  "score": 0.727,
+  "heard": "بالشيء",
+  "how": "H"
+ },
+ "الْبَازِلَاءُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "البازلاء",
+  "how": "H"
+ },
+ "الْحَيُّ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الحي",
+  "how": "H"
+ },
+ "الْعِنَبُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "العنب",
+  "how": "H"
+ },
+ "الْكُمَّثْرَى": {
+  "ok": false,
+  "score": 0.857,
+  "heard": "الكمثرة",
+  "how": "U"
+ },
+ "بَارِدٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "بارد",
+  "how": "H"
+ },
+ "بِطِّيخٌ": {
+  "ok": false,
+  "score": 0.8,
+  "heard": "بالطيخ",
+  "how": "H"
+ },
+ "جَدِيدٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "جديد",
+  "how": "H"
+ },
+ "حَظَرَ": {
+  "ok": false,
+  "score": 0.667,
+  "heard": "حضر",
+  "how": "H"
+ },
+ "خَيْرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "خير",
+  "how": "P"
+ },
+ "زَيْتٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "زيت",
+  "how": "H"
+ },
+ "سَمِينٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "سمين",
+  "how": "H"
+ },
+ "ضَلَّ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "ضل",
+  "how": "H"
+ },
+ "عَمَلٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "عمل",
+  "how": "H"
+ },
+ "فَرَاوِلَةٌ": {
+  "ok": false,
+  "score": 0.833,
+  "heard": "ثراولة",
+  "how": "H"
+ },
+ "قِرْدٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "قرد",
+  "how": "H"
+ },
+ "كُمَّثْرَاةٌ": {
+  "ok": false,
+  "score": 0.833,
+  "heard": "كماثرة",
+  "how": "N"
+ },
+ "مَلْعَبٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "ملعب",
+  "how": "P"
+ },
+ "مِلْحٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "ملح",
+  "how": "H"
+ },
+ "نَعْجَةٌ": {
+  "ok": false,
+  "score": 0.75,
+  "heard": "ناجة",
+  "how": "H"
+ },
+ "وَرَقَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "ورقة",
+  "how": "H"
+ },
+ "أَزْرَقُ": {
+  "ok": false,
+  "score": 0.889,
+  "heard": "دازرق",
+  "how": "H"
+ },
+ "التِّينُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "التين",
+  "how": "H"
+ },
+ "السَّاعَةُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الساعة",
+  "how": "H"
+ },
+ "النَّعْجَةُ": {
+  "ok": false,
+  "score": 0.833,
+  "heard": "الناجة",
+  "how": "H"
+ },
+ "الْجَرَادُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الجراد",
+  "how": "H"
+ },
+ "الْخِيَارُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الخيار",
+  "how": "H"
+ },
+ "الْقِرْدُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "القرد",
+  "how": "H"
+ },
+ "الْمِلْحُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الملح",
+  "how": "H"
+ },
+ "بَقَرَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "بقرة",
+  "how": "H"
+ },
+ "ثَمِينٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "ثمين",
+  "how": "H"
+ },
+ "حَبَّ": {
+  "ok": false,
+  "score": 0.8,
+  "heard": "حبد",
+  "how": "H"
+ },
+ "خَرَسَ": {
+  "ok": false,
+  "score": 0.667,
+  "heard": "خرص",
+  "how": "H"
+ },
+ "ذِلٌّ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "ذل",
+  "how": "H"
+ },
+ "سَلَامٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "سلام",
+  "how": "H"
+ },
+ "شَهْمٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "شهم",
+  "how": "H"
+ },
+ "ظِلٌّ": {
+  "ok": false,
+  "score": 0.5,
+  "heard": "ذل",
+  "how": "H"
+ },
+ "غُرَابٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "غراب",
+  "how": "H"
+ },
+ "قَرِيبَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "قريبة",
+  "how": "H"
+ },
+ "كَسِيرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "كسير",
+  "how": "H"
+ },
+ "مَحْظُورٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "محظور",
+  "how": "H"
+ },
+ "مِشْمِشٌ": {
+  "ok": false,
+  "score": 0.889,
+  "heard": "مش مش",
+  "how": "H"
+ },
+ "نَظَرَ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "نظر",
+  "how": "H"
+ },
+ "هُوَ": {
+  "ok": false,
+  "score": 0.4,
+  "heard": "روا",
+  "how": "H"
+ },
+ "أَسَدٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "أسد",
+  "how": "H"
+ },
+ "الثُّعْبَانُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الثعبان",
+  "how": "H"
+ },
+ "السَّبُّورَةُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "السبورة",
+  "how": "H"
+ },
+ "النَّمْلَةُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "النملة",
+  "how": "H"
+ },
+ "الْجَزَرُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الجزر",
+  "how": "H"
+ },
+ "الْعَسَلُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "العسل",
+  "how": "H"
+ },
+ "الْكَرَزُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الكرز",
+  "how": "H"
+ },
+ "الْهُدْهُدُ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "الهدهد",
+  "how": "H"
+ },
+ "بَهَارٌ": {
+  "ok": false,
+  "score": 0.857,
+  "heard": "بهر",
+  "how": "H"
+ },
+ "ثَوْرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "ثور",
+  "how": "H"
+ },
+ "حَرَامٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "حرام",
+  "how": "H"
+ },
+ "خَرِيطَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "خريطة",
+  "how": "U"
+ },
+ "رُمَّانٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "رمان",
+  "how": "H"
+ },
+ "سَلَمٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "سلم",
+  "how": "H"
+ },
+ "صَغِيرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "صغير",
+  "how": "H"
+ },
+ "عَسَلٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "عسل",
+  "how": "P"
+ },
+ "فَارِغٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "فارغ",
+  "how": "H"
+ },
+ "قَصِيرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "قصير",
+  "how": "H"
+ },
+ "كَلْبٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "كلب",
+  "how": "P"
+ },
+ "مَدْرَسَةٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "مدرسة",
+  "how": "H"
+ },
+ "مِشْمِشَةٌ": {
+  "ok": false,
+  "score": 0.909,
+  "heard": "مش مشة",
+  "how": "H"
+ },
+ "نَظِيرٌ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "نظير",
+  "how": "H"
+ },
+ "هِيَ": {
+  "ok": true,
+  "score": 1.0,
+  "heard": "هي",
+  "how": "H"
+ }
+}

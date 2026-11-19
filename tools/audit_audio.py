@@ -95,7 +95,10 @@ def merge():
     chosen, check = {}, {}
     order = ["H", "N", "P", "U", "F"]
     for w, vs in W.items():
-        best = max(vs, key=lambda k: (vs[k]["score"], -order.index(k)))
+        # jamais le tanwin (« -un ») : un mot seul se dit à la pause, comme en classe
+        vs = {k: v for k, v in vs.items() if k != "F"} or vs
+        # on garde la pause (H) sauf si une autre écriture est nettement mieux reconnue
+        best = max(vs, key=lambda k: (vs[k]["score"] - (0 if k == "H" else 0.1), -order.index(k)))
         chosen[w] = vs[best]["sent"]
         check[w] = {"ok": vs[best]["score"] >= 0.99, "score": vs[best]["score"], "heard": vs[best]["heard"], "how": best}
     json.dump(dict(sorted(chosen.items())), open("audio/spoken.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)

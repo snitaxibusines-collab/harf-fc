@@ -9,7 +9,6 @@ import os
 import re
 import shutil
 
-import edge_tts
 
 VOICE = "ar-SA-HamedNeural"
 RATE = "+0%"
@@ -85,6 +84,8 @@ def spoken(text: str) -> str:
 
 
 async def one(text: str, path: str) -> None:
+    import edge_tts
+
     for attempt in range(4):
         try:
             await edge_tts.Communicate(spoken(text), VOICE, rate=RATE).save(path)
