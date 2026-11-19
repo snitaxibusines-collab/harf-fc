@@ -6,12 +6,20 @@ Tourne sur GitHub Actions. Les sons vont dans docs/audio/, avec un sommaire docs
 import asyncio
 import json
 import os
+import re
 import shutil
 
 import edge_tts
 
 VOICE = "ar-SA-HamedNeural"
 RATE = "+0%"
+FIX = "fix1"  # change quand on corrige la prononciation
+
+# Prononciations corrigées : la voix coupe parfois la fin des mots en ى.
+SPOKEN = {
+    "مُرَبَّى": "مُرَبًّا",
+}
+
 OUT = "docs/audio"
 
 
@@ -20,13 +28,20 @@ def file_name(text: str) -> str:
     for b in text.encode("utf-8"):
         h ^= b
         h = (h * 0x01000193) & 0xFFFFFFFF
-    return f"h{h:08x}.mp3"
+    return f"v{h:08x}.mp3"
+
+
+def spoken(text: str) -> str:
+    if text in SPOKEN:
+        return SPOKEN[text]
+    # ى en fin de mot se dit « â » : on l'écrit ا pour que la voix ne coupe pas la fin.
+    return re.sub(r"ى(?=[\u064B-\u0652]*(?:\s|$|[،؟]))", "ا", text)
 
 
 async def one(text: str, path: str) -> None:
     for attempt in range(4):
         try:
-            await edge_tts.Communicate(text, VOICE, rate=RATE).save(path)
+            await edge_tts.Communicate(spoken(text), VOICE, rate=RATE).save(path)
             if os.path.getsize(path) > 1000:
                 return
         except Exception as e:  # réseau capricieux : on réessaie
@@ -37,7 +52,7 @@ async def one(text: str, path: str) -> None:
 
 async def main() -> None:
     texts = json.load(open("audio/texts.json", encoding="utf-8"))
-    tag = f"{VOICE} {RATE}"
+    tag = f"{VOICE} {RATE} {FIX}"
     tag_file = os.path.join(OUT, "voice.txt")
     if not os.path.exists(tag_file) or open(tag_file).read().strip() != tag:
         shutil.rmtree(OUT, ignore_errors=True)  # nouvelle voix : on refait tout

@@ -367,3 +367,20 @@ input { font-family: inherit; font-size: 20px; }
 .depth-item.back { top: 0; left: 50%; transform: translateX(-50%); opacity: 0.85; }
 .depth-ref { top: 54%; }
 .depth-scene::after { bottom: 34px; }
+
+/* Petits écrans (téléphone) */
+@media (max-width: 640px) {
+  .screen { padding-left: 14px !important; padding-right: 14px !important; }
+  .topbar { gap: 10px; }
+  .topbar .icon-btn { width: 44px; height: 44px; flex: none; }
+  .topbar-title { font-size: 17px; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .topbar-title .muted { display: none; }
+  .topbar-right { flex: none; }
+  .step-pill, .score-pill { font-size: 12px; padding: 4px 10px; white-space: nowrap; }
+  .activity-title { font-size: 19px; }
+  .word-big { font-size: 64px; }
+  .card { padding: 16px; }
+  .goal { grid-template-columns: 1fr !important; }
+  .stack-scene { transform: scale(0.8); }
+  .depth-scene { transform: scale(0.85); }
+}

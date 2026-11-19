@@ -11,5 +11,5 @@ export function speechFile(t: string): string {
     h ^= b;
     h = Math.imul(h, 0x01000193) >>> 0;
   }
-  return 'h' + h.toString(16).padStart(8, '0') + '.mp3';
+  return 'v' + h.toString(16).padStart(8, '0') + '.mp3';
 }
