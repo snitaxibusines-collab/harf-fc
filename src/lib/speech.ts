@@ -3,12 +3,15 @@
 // 2. Les sons fabriqués à l'avance (dossier audio/, liste dans audio/manifest.json).
 // 3. En dernier recours : la voix arabe de l'iPad.
 import { normalizeSpeech, speechFile } from './speechKey';
+import { teacherUrl } from './teacher';
 
 export const AUDIO_FILES: Record<string, string> = {};
 
 const online = typeof window !== 'undefined' && location.protocol.startsWith('http');
 
 function fileFor(text: string): string | null {
+  const prof = teacherUrl(text);
+  if (prof) return prof;
   const own = AUDIO_FILES[text] ?? AUDIO_FILES[normalizeSpeech(text)];
   if (own) return own;
   return online ? `audio/${speechFile(text)}` : null;

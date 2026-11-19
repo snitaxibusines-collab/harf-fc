@@ -311,3 +311,13 @@ input { font-family: inherit; font-size: 20px; }
 }
 .voice-help ul { margin: 6px 0 10px; padding-left: 20px; }
 .voice-help li { margin: 4px 0; }
+
+/* Voix de la prof */
+.teacher { margin: 0 24px 32px; }
+.teacher .error { color: var(--red); font-weight: 700; }
+.teacher-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 10px; }
+.teacher-list li { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 10px 12px; border-radius: 14px; background: #f4f1ea; }
+.teacher-list li.has { background: #e3f4e6; }
+.teacher-ar { font-size: 30px; min-width: 90px; }
+.teacher-state { font-size: 13px; color: #556; flex: 1; }
+.teacher-list .btn { padding: 8px 12px; font-size: 15px; }

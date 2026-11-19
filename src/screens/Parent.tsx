@@ -3,6 +3,7 @@ import { ALL_WORDS, WORLDS } from '../data/content';
 import { arabicVoiceName, testSound } from '../lib/speech';
 import { pendingReviewWords, resetProgress, setPlayerName, setUnlockAll, useProgress } from '../lib/progress';
 import { Ar, Balls, TopBar } from '../components/ui';
+import { TeacherVoices } from './TeacherVoices';
 
 // L'espace parent : progrès, réglages. Protégé par une petite multiplication.
 export function Parent({ onBack }: { onBack: () => void }) {
@@ -12,6 +13,7 @@ export function Parent({ onBack }: { onBack: () => void }) {
   const [open, setOpen] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
   const [soundMsg, setSoundMsg] = useState<string | null>(null);
+  const [showRec, setShowRec] = useState(false);
   const voice = arabicVoiceName();
   const review = pendingReviewWords();
 
@@ -89,6 +91,9 @@ export function Parent({ onBack }: { onBack: () => void }) {
             Tester le son
           </button>
           {soundMsg && <p className="muted">{soundMsg}</p>}
+          <button type="button" className="btn btn-gold" onClick={() => setShowRec((v) => !v)}>
+            {showRec ? 'Fermer « Voix de la prof »' : 'Enregistrer les mots (voix de la prof)'}
+          </button>
           <p className="muted">
             Version de l'appli : {__BUILD__}. Voix de secours de l'iPad : {voice ?? 'aucune'}.
           </p>
@@ -117,6 +122,7 @@ export function Parent({ onBack }: { onBack: () => void }) {
           )}
         </section>
       </main>
+      {showRec && <TeacherVoices />}
     </div>
   );
 }
