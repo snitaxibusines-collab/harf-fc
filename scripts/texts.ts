@@ -19,7 +19,7 @@ for (const w of Object.values(ALL_WORDS)) {
       add(`ضَعِ ${w.defAcc} ${pr.ar} ${p.ar}`);
     }
   }
-  add(`أَيْنَ ${w.def} ؟`);
+  if (w.def) add(`أَيْنَ ${w.def} ؟`);
 }
 for (const world of WORLDS) for (const [a, b] of world.sounds?.pairs ?? []) { add(a); add(b); }
 for (const t of allChoiceSentences()) add(t);
