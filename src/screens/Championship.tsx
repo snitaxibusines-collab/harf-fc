@@ -12,11 +12,9 @@ export function Championship({ onBack, onPlay }: { onBack: () => void; onPlay: (
         {WORLDS.map((w, wi) => {
           const done = w.matches.filter((m) => (p.stars[m.id] ?? 0) > 0).length;
           return (
-            <section key={w.id} className={`card world world-${wi}`}>
+            <section key={w.id} className={`card world world-${wi} ${wi % 2 ? 'world-odd' : 'world-even'}`}>
               <header className="world-head">
-                <h2>
-                  Monde {wi + 1} : {w.title.toLowerCase()}
-                </h2>
+                <h2>{w.bonus ? `Monde bonus : ${w.title.toLowerCase()}` : w.id === 'review1' ? w.title : `Monde ${wi + 1} : ${w.title.toLowerCase()}`}</h2>
                 <Ar className="world-rule">{w.ruleLabel}</Ar>
               </header>
               <p className="muted">{w.subtitle}</p>
@@ -43,16 +41,6 @@ export function Championship({ onBack, onPlay }: { onBack: () => void; onPlay: (
             </section>
           );
         })}
-        <section className="card world locked-world">
-          <header className="world-head">
-            <h2>Monde bonus : le foot</h2>
-            <Ar className="world-rule">كُرَةُ الْقَدَمِ</Ar>
-          </header>
-          <p className="muted">Ballon, but, joueur, équipe, stade… Bientôt disponible !</p>
-          <div className="lock-big">
-            <Icon name="lock" size={48} />
-          </div>
-        </section>
       </main>
     </div>
   );

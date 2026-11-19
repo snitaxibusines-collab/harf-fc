@@ -1,0 +1,4 @@
+Illustrations : Fluent Emoji (3D) de Microsoft — https://github.com/microsoft/fluentui-emoji
+Licence MIT — Copyright (c) Microsoft Corporation.
+Fichiers repris du paquet npm @lobehub/fluent-emoji-3d (licence MIT).
+Les dessins du sucre, du yaourt, de la confiture, de la figue, de la grenade, du poireau et du tableau sont faits pour Harf FC.

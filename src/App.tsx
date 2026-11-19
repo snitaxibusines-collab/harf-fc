@@ -42,6 +42,11 @@ function VoiceHelp() {
     window.addEventListener(VOICE_FAIL_EVENT, on);
     return () => window.removeEventListener(VOICE_FAIL_EVENT, on);
   }, []);
+  useEffect(() => {
+    if (!show) return;
+    const t = setTimeout(() => setSeen(true), 9000);
+    return () => clearTimeout(t);
+  }, [show]);
   if (!show || seen) return null;
   return (
     <div className="voice-help" role="alert">

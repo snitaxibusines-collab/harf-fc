@@ -9,6 +9,7 @@ import { Quiz } from '../activities/Quiz';
 import { RuleGame } from '../activities/RuleGame';
 import { Sounds } from '../activities/Sounds';
 import { Dictation } from '../activities/Dictation';
+import { Choice } from '../activities/Choice';
 import type { ActivityResult } from '../activities/types';
 import { Progress, TopBar } from '../components/ui';
 import { Result } from './Result';
@@ -21,6 +22,7 @@ const NAMES: Record<Activity['type'], string> = {
   rule: 'La règle',
   sounds: 'Sons proches',
   dictation: 'Dictée',
+  choice: 'La règle',
 };
 
 export function starsFor(correct: number, total: number): number {
@@ -83,6 +85,7 @@ export function MatchRunner({ match, onExit, onNext, reviewWords }: { match: Mat
         {a.type === 'rule' && <RuleGame key={key} rule={a.rule} count={a.count} onDone={done} />}
         {a.type === 'sounds' && <Sounds key={key} world={world} count={a.count} onDone={done} />}
         {a.type === 'dictation' && <Dictation key={key} words={a.words} onDone={done} />}
+        {a.type === 'choice' && <Choice key={key} gen={a.gen} count={a.count} title={a.title} onDone={done} />}
       </main>
     </div>
   );

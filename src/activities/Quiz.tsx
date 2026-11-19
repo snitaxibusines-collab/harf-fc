@@ -25,6 +25,8 @@ function makeQuestions(ids: string[], count: number): Q[] {
     let type = types[k % types.length];
     if (type === 'singular' && !word.sing) type = 'imageToWord';
     if (type === 'order' && letters(word.ar).length > 6) type = 'listen';
+    if (!word.img && (type === 'imageToWord' || type === 'wordToImage' || type === 'singular')) type = 'frToWord';
+    if (type === 'wordToImage' && pool.some((x) => !x.img)) type = 'frToWord';
     const others = pick(type === 'singular' ? pool.filter((w) => w.sing) : pool, 2, [word]);
     qs.push({ type, word, options: shuffle([word, ...others]) });
   }

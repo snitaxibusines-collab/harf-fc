@@ -54,11 +54,12 @@ export function Discover({ words, onDone }: ActivityProps & { words: string[] })
       <div className="discover-grid">
         <section className="card word-card">
           <Picture img={w.img} label={w.fr} size={170} />
-          <Ar className="word-big">{vowels ? w.ar : stripHarakat(w.ar)}</Ar>
-          <p className="fr-big">{w.fr}</p>
+          <Ar className={w.long ? 'word-long' : 'word-big'}>{vowels ? w.ar : stripHarakat(w.ar)}</Ar>
+          <p className={w.long ? 'fr-mid' : 'fr-big'}>{w.fr}</p>
+          {w.note && <p className="note">{w.note}</p>}
           {w.sing && (
             <p className="sing">
-              Un seul : <Ar className="sing-ar">{w.sing.ar}</Ar> ({w.sing.fr})
+              {/^(un|une|des|du|de|le|la|l')\b/i.test(w.fr) ? 'Un seul' : 'Au féminin'} : <Ar className="sing-ar">{w.sing.ar}</Ar> ({w.sing.fr})
             </p>
           )}
           <div className="seg" role="group" aria-label="Voyelles">

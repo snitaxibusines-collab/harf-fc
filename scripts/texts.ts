@@ -3,6 +3,7 @@
 import { writeFileSync } from 'node:fs';
 import { ALL_WORDS, PLACES, PREP, WORLDS } from '../src/data/content';
 import { normalizeSpeech } from '../src/lib/speechKey';
+import { allChoiceSentences } from '../src/data/choices';
 
 const out = new Set<string>();
 const add = (t: string) => out.add(normalizeSpeech(t));
@@ -10,7 +11,7 @@ const add = (t: string) => out.add(normalizeSpeech(t));
 for (const w of Object.values(ALL_WORDS)) {
   add(w.ar);
   if (w.sing) add(w.sing.ar);
-  for (const p of Object.values(PLACES)) {
+  if (w.def && w.defAcc) for (const p of Object.values(PLACES)) {
     add(`${w.def} … ${p.ar}`);
     for (const pr of Object.values(PREP)) {
       add(`${w.def} ${pr.ar} ${p.ar}`);
@@ -20,7 +21,8 @@ for (const w of Object.values(ALL_WORDS)) {
   }
   add(`أَيْنَ ${w.def} ؟`);
 }
-for (const world of WORLDS) for (const [a, b] of world.sounds.pairs) { add(a); add(b); }
+for (const world of WORLDS) for (const [a, b] of world.sounds?.pairs ?? []) { add(a); add(b); }
+for (const t of allChoiceSentences()) add(t);
 add('مَرْحَبًا، أَنَا لَاعِبٌ فِي فَرِيقِ حَرْف');
 
 writeFileSync('audio/texts.json', JSON.stringify([...out].sort(), null, 1) + '\n');

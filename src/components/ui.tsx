@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import type { ReactNode } from 'react';
 import { sayArabic } from '../lib/speech';
+import { DRAWINGS } from './drawings';
 
 // ---------- Icônes (dessinées en traits simples) ----------
 type IconName = 'back' | 'close' | 'speaker' | 'mic' | 'stop' | 'play' | 'lock' | 'trophy' | 'redo' | 'check' | 'turtle' | 'settings';
@@ -106,58 +108,19 @@ export function Listen({ text, label = 'Écouter', slow = false, big = false }: 
 }
 
 // ---------- Images provisoires ----------
-const SVGS: Record<string, ReactNode> = {
-  jam: (
-    <>
-      <rect x="18" y="30" width="64" height="58" rx="10" fill="#E85A71" />
-      <rect x="14" y="18" width="72" height="16" rx="5" fill="#F4C27A" />
-      <rect x="28" y="48" width="44" height="22" rx="4" fill="#FFF" opacity="0.85" />
-      <circle cx="42" cy="59" r="5" fill="#C8102E" />
-      <circle cx="56" cy="59" r="5" fill="#C8102E" />
-    </>
-  ),
-  sugar: (
-    <>
-      <rect x="14" y="44" width="34" height="34" rx="4" fill="#FFFFFF" stroke="#C9CFDB" strokeWidth="3" />
-      <rect x="52" y="44" width="34" height="34" rx="4" fill="#FFFFFF" stroke="#C9CFDB" strokeWidth="3" />
-      <rect x="33" y="12" width="34" height="34" rx="4" fill="#FFFFFF" stroke="#C9CFDB" strokeWidth="3" />
-    </>
-  ),
-  yogurt: (
-    <>
-      <path d="M22 30h56l-8 58H30z" fill="#FFFFFF" stroke="#C9CFDB" strokeWidth="3" />
-      <rect x="18" y="20" width="64" height="12" rx="4" fill="#4C8DF0" />
-      <rect x="30" y="50" width="40" height="18" rx="4" fill="#E8F0FF" />
-    </>
-  ),
-  apricot: (
-    <>
-      <circle cx="50" cy="56" r="34" fill="#F7A440" />
-      <path d="M50 24c-6 10-6 54 0 64" stroke="#E07F1C" strokeWidth="3" fill="none" />
-      <path d="M50 24c8-12 22-14 26-10-6 6-16 10-26 10z" fill="#4C9A4A" />
-    </>
-  ),
-  fig: (
-    <>
-      <path d="M50 14c-6 14-34 30-34 52a34 30 0 0 0 68 0c0-22-28-38-34-52z" fill="#7B3F8C" />
-      <path d="M46 12h8v8h-8z" fill="#5A7B2E" />
-      <circle cx="40" cy="64" r="3" fill="#C58BD6" />
-      <circle cx="56" cy="72" r="3" fill="#C58BD6" />
-      <circle cx="58" cy="56" r="3" fill="#C58BD6" />
-    </>
-  ),
-  pomegranate: (
-    <>
-      <circle cx="50" cy="58" r="34" fill="#C8102E" />
-      <path d="M40 26l4-12 6 8 6-8 4 12z" fill="#9E0B22" />
-      <circle cx="40" cy="56" r="4" fill="#FF8FA3" />
-      <circle cx="54" cy="64" r="4" fill="#FF8FA3" />
-      <circle cx="60" cy="50" r="4" fill="#FF8FA3" />
-    </>
-  ),
-};
+const SVGS: Record<string, ReactNode> = DRAWINGS;
 
 export function Picture({ img, size = 120, label }: { img: string; size?: number; label: string }) {
+  if (!img) return null;
+  if (img.startsWith('color:')) {
+    // Un maillot de la couleur demandée.
+    const c = img.slice(6);
+    return (
+      <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label={label}>
+        <path d="M30 14 L42 10 Q50 18 58 10 L70 14 L92 30 L82 46 L72 40 L72 90 L28 90 L28 40 L18 46 L8 30 Z" fill={c} stroke="#0b1530" strokeWidth="3" strokeLinejoin="round" />
+      </svg>
+    );
+  }
   if (img.startsWith('svg:')) {
     return (
       <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label={label}>
@@ -165,11 +128,7 @@ export function Picture({ img, size = 120, label }: { img: string; size?: number
       </svg>
     );
   }
-  return (
-    <span className="emoji-pic" role="img" aria-label={label} style={{ fontSize: size * 0.82, width: size, height: size }}>
-      {img}
-    </span>
-  );
+  return <Emoji e={img} size={size} label={label} />;
 }
 
 // ---------- Barre du haut ----------
@@ -191,4 +150,22 @@ export function Progress({ value, max }: { value: number; max: number }) {
       <div style={{ width: `${(100 * value) / Math.max(1, max)}%` }} />
     </div>
   );
+}
+
+// Une illustration : l'image Fluent Emoji 3D (Microsoft, licence MIT) rangée dans img/.
+// Si l'image manque, on affiche l'émoji du système.
+export function emojiSrc(e: string): string {
+  return 'img/' + [...e.replace(/\uFE0F/g, '')].map((c) => c.codePointAt(0)!.toString(16)).join('-') + '.webp';
+}
+
+export function Emoji({ e, size = 100, label = '' }: { e: string; size?: number; label?: string }) {
+  const [broken, setBroken] = useState(false);
+  if (broken) {
+    return (
+      <span className="emoji-pic" role="img" aria-label={label} style={{ fontSize: size * 0.82, width: size, height: size }}>
+        {e}
+      </span>
+    );
+  }
+  return <img className="emoji-img" src={emojiSrc(e)} alt={label} width={size} height={size} draggable={false} onError={() => setBroken(true)} />;
 }

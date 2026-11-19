@@ -10,8 +10,8 @@ import type { ActivityProps } from './types';
 export function Sounds({ world, count, onDone }: ActivityProps & { world: World; count: number }) {
   const rounds = useMemo(
     () =>
-      shuffle(world.sounds.pairs)
-        .concat(shuffle(world.sounds.pairs))
+      shuffle(world.sounds!.pairs)
+        .concat(shuffle(world.sounds!.pairs))
         .slice(0, count)
         .map((pair) => {
           const target = Math.random() < 0.5 ? 0 : 1;
@@ -65,7 +65,7 @@ export function Sounds({ world, count, onDone }: ActivityProps & { world: World;
     else onDone({ correct, total: rounds.length, missed: [] });
   }
 
-  const [a, b] = world.sounds.letters;
+  const [a, b] = world.sounds!.letters;
   return (
     <div className="activity sounds pitch">
       <div className="quiz-head">
@@ -94,7 +94,7 @@ export function Sounds({ world, count, onDone }: ActivityProps & { world: World;
         })}
       </div>
       <div className="sounds-foot">
-        <p className="tip">Astuce : {world.sounds.tip}</p>
+        <p className="tip">Astuce : {world.sounds!.tip}</p>
         {answer && (
           <div className="row">
             <button type="button" className={`btn btn-gold ${recording ? 'pulse' : ''}`} onClick={toggleRecord}>
