@@ -315,9 +315,15 @@ input { font-family: inherit; font-size: 20px; }
 /* Voix de la prof */
 .teacher { margin: 0 24px 32px; }
 .teacher .error { color: var(--red); font-weight: 700; }
-.teacher-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 10px; }
+.teacher-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); gap: 10px; }
 .teacher-list li { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 10px 12px; border-radius: 14px; background: #f4f1ea; }
-.teacher-list li.has { background: #e3f4e6; }
+.teacher-list li.has, .teacher-list li.ok { background: #e3f4e6; }
+.teacher-list li.bad { background: #fde4e7; }
+.teacher-word { display: flex; flex-direction: column; min-width: 150px; flex: 1; }
+.teacher-fr { font-size: 16px; font-weight: 700; }
+.teacher-count { font-size: 16px; }
+.teacher-filters { flex-wrap: wrap; margin-bottom: 12px; }
+.btn-green { background: #1f8a4c; color: #fff; box-shadow: 0 5px 0 #13603a; }
 .teacher-ar { font-size: 30px; min-width: 90px; }
 .teacher-state { font-size: 13px; color: #556; flex: 1; }
 .teacher-list .btn { padding: 8px 12px; font-size: 15px; }

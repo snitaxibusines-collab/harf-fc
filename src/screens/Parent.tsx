@@ -92,7 +92,7 @@ export function Parent({ onBack }: { onBack: () => void }) {
           </button>
           {soundMsg && <p className="muted">{soundMsg}</p>}
           <button type="button" className="btn btn-gold" onClick={() => setShowRec((v) => !v)}>
-            {showRec ? 'Fermer « Voix de la prof »' : 'Enregistrer les mots (voix de la prof)'}
+            {showRec ? 'Fermer la liste des mots' : 'Écouter et vérifier les mots (et ma voix)'}
           </button>
           <p className="muted">
             Version de l'appli : {__BUILD__}. Voix de secours de l'iPad : {voice ?? 'aucune'}.

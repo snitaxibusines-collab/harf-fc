@@ -231,3 +231,8 @@ export function beep(kind: 'good' | 'bad' | 'win') {
     /* pas de son, ce n'est pas grave */
   }
 }
+
+// La voix de l'ordinateur seule (sans la voix enregistrée), pour comparer dans la page d'écoute.
+export function sayComputer(text: string): Promise<void> {
+  return playFile(`audio/${speechFile(text)}`, 1).then(() => undefined);
+}
