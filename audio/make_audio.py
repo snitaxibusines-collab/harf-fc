@@ -13,12 +13,15 @@ import edge_tts
 
 VOICE = "ar-SA-HamedNeural"
 RATE = "+0%"
-FIX = "fix1"  # change quand on corrige la prononciation
+FIX = "fix2"  # change quand on corrige la prononciation
 
 # Prononciations corrigées : la voix coupe parfois la fin des mots en ى.
-SPOKEN = {
-    "مُرَبَّى": "مُرَبًّا",
-}
+SPOKEN: dict = {}
+
+TANWIN = "\u064B\u064C\u064D"          # ً ٌ ٍ
+VOWELS = "\u064E\u064F\u0650"          # َ ُ ِ
+MARKS = re.compile(r"[\u064B-\u0652\u0670]")
+
 
 OUT = "docs/audio"
 
@@ -28,12 +31,33 @@ def file_name(text: str) -> str:
     for b in text.encode("utf-8"):
         h ^= b
         h = (h * 0x01000193) & 0xFFFFFFFF
-    return f"v{h:08x}.mp3"
+    return f"w{h:08x}.mp3"
+
+
+def pausal(word: str) -> str:
+    """Un mot seul se dit « à la pause », comme en classe : pas de « n » final, pas de voyelle finale."""
+    i = len(word)
+    while i > 0 and MARKS.match(word[i - 1]):
+        i -= 1
+    if i == 0:
+        return word
+    head, last, marks = word[: i - 1], word[i - 1], word[i:]
+    if last in "ىا":
+        # -an / -ā en fin : on garde seulement le « â » long (مُرَبًّى → مُرَبَّا)
+        head = re.sub("\u064B", "\u064E", head)
+        return head + "ا"
+    # seulement les terminaisons de nom (-u, -un, -in, -an) et le ة ; on garde أَنْتَ / أَنْتِ, حَلَّ…
+    if not any(c in marks for c in TANWIN + "\u064F") and not (last == "ة" and marks):
+        return word
+    keep = "".join(c for c in marks if c == "\u0651")  # on garde la chadda
+    return head + last + keep + "\u0652"
 
 
 def spoken(text: str) -> str:
     if text in SPOKEN:
         return SPOKEN[text]
+    if " " not in text.strip():
+        return pausal(text.strip())
     # ى en fin de mot se dit « â » : on l'écrit ا pour que la voix ne coupe pas la fin.
     return re.sub(r"ى(?=[\u064B-\u0652]*(?:\s|$|[،؟]))", "ا", text)
 
