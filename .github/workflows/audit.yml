@@ -1,35 +1,118 @@
 name: Contrôle des sons
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
       - tools/audit_audio.py
       - .github/workflows/audit.yml
-  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  audit:
+  mots:
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        part: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Installer
-        run: pip install -q edge-tts faster-whisper
-      - name: Réécouter les sons
-        run: python tools/audit_audio.py
-      - name: Enregistrer le rapport
+      - run: pip install -q edge-tts faster-whisper
+      - name: Essayer plusieurs écritures de chaque mot
+        run: python tools/audit_audio.py words ${{ matrix.part }} 12
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mots-${{ matrix.part }}
+          path: tools/audit/parts/
+
+  choix:
+    needs: mots
+    runs-on: ubuntu-latest
+    concurrency:
+      group: audio
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          path: tools/audit/parts/
+          merge-multiple: true
+      - name: Choisir l'écriture de chaque mot
+        run: python tools/audit_audio.py merge
+      - run: pip install -q edge-tts
+      - name: Refaire les sons
+        run: python audio/make_audio.py
+      - name: Enregistrer
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git pull -q --rebase origin main
-          git add tools/audit
+          cp tools/audit/check.json docs/audio/check.json
+          git add audio/spoken.json tools/audit/check.json docs/audio
           git diff --cached --quiet && exit 0
-          git commit -m "Rapport de contrôle des sons"
+          git commit -m "Sons : écriture choisie mot par mot (contrôle Whisper)"
+          git pull -q --rebase origin main
+          git push
+
+  phrases:
+    needs: choix
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        part: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -q faster-whisper
+      - name: Réécouter les phrases
+        run: python tools/audit_audio.py sentences ${{ matrix.part }} 12
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phrases-${{ matrix.part }}
+          path: tools/audit/parts/
+
+  bilan:
+    needs: phrases
+    runs-on: ubuntu-latest
+    concurrency:
+      group: audio
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          path: tools/audit/parts/
+          pattern: phrases-*
+          merge-multiple: true
+      - name: Bilan des phrases
+        run: python tools/audit_audio.py merge-sentences
+      - name: Enregistrer
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          cp tools/audit/check.json docs/audio/check.json
+          git add tools/audit/check.json docs/audio/check.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Bilan du contrôle des phrases"
+          git pull -q --rebase origin main
           git push
