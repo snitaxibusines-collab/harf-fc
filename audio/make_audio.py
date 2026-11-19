@@ -10,8 +10,8 @@ import shutil
 
 import edge_tts
 
-VOICE = "ar-SA-ZariyahNeural"
-RATE = "-10%"
+VOICE = "ar-SA-HamedNeural"
+RATE = "+0%"
 OUT = "docs/audio"
 
 
@@ -20,7 +20,7 @@ def file_name(text: str) -> str:
     for b in text.encode("utf-8"):
         h ^= b
         h = (h * 0x01000193) & 0xFFFFFFFF
-    return f"z{h:08x}.mp3"
+    return f"h{h:08x}.mp3"
 
 
 async def one(text: str, path: str) -> None:
